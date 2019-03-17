@@ -8,6 +8,10 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from bs4 import BeautifulSoup
+import requests
+from selenium import webdriver
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -30,15 +34,31 @@ def callback():
         abort(400)
     return 'OK'
 
+
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+browser = webdriver.Chrome(chrome_options=options,
+                           executable_path='C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe')
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
-    if event.message.text == 'HONDA':
-        message = TextSendMessage(text='hrv')
-    else:
+    if event.message.text == '國產車銷售排行':
+        text = getLocalCarRanking()
+        message = TextSendMessage(text=text)
+    elif event.message.text == '進口車銷售排行':
         message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
+
+
+def getLocalCarRanking():
+    url = 'https://www.kingautos.net/'
+    browser.get(url)
+    soup = BeautifulSoup(browser.page_source, 'html5lib')
+    str = soup.find('div','domestic')
+    return str
+
+
 
 import os
 if __name__ == "__main__":
