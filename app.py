@@ -47,7 +47,8 @@ def handle_message(event):
         domesticRank = getLocalCarRanking()
         message = TextSendMessage(text=domesticRank)
     elif event.message.text == '進口車銷售排行':
-        message = TextSendMessage(text=event.message.text)
+        importedRank = getImportedCarRanking()
+        message = TextSendMessage(text=importedRank)
     line_bot_api.reply_message(event.reply_token, message)
 
 
@@ -65,6 +66,21 @@ def getLocalCarRanking():
         localCarString = localCarString + formatstr + '\n'
     print(localCarString)
     return localCarString
+
+def getImportedCarRanking():
+    url = 'https://www.kingautos.net/'
+    resp = requests.get(url)
+    importedCarString = ''
+    soup = BeautifulSoup(resp.text, 'html.parser')
+    namedivs = soup.find('div', id='imported').find_all('span', 'carName')
+    numdivs = soup.find('div', id='imported').find_all('span', 'carNum')
+    i = 1
+    for namediv, numdiv in zip(namedivs, numdivs):
+        formatstr = '%d %s %s' % (i, namediv.text, numdiv.text)
+        i += 1
+        importedCarString = importedCarString + formatstr + '\n'
+    print(importedCarString)
+    return importedCarString
 
 
 
