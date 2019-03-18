@@ -64,7 +64,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[0],
                         title=carNameList[0],
-                        text='NO.1 銷量:' + soldNumList[0] + '台',
+                        text='NO.1 銷量:' + soldNumList[0] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback1',
@@ -84,7 +84,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[1],
                         title=carNameList[1],
-                        text='NO.2 銷量:' + soldNumList[1] + '台',
+                        text='NO.2 銷量:' + soldNumList[1] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -104,7 +104,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[2],
                         title=carNameList[2],
-                        text='NO.3 銷量:' + soldNumList[2] + '台',
+                        text='NO.3 銷量:' + soldNumList[2] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -124,7 +124,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[3],
                         title=carNameList[3],
-                        text='NO.4 銷量:' + soldNumList[3] + '台',
+                        text='NO.4 銷量:' + soldNumList[3] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -144,7 +144,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[4],
                         title=carNameList[4],
-                        text='NO.5 銷量:' + soldNumList[4] + '台',
+                        text='NO.5 銷量:' + soldNumList[4] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -164,7 +164,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[5],
                         title=carNameList[5],
-                        text='NO.6 銷量:' + soldNumList[5] + '台',
+                        text='NO.6 銷量:' + soldNumList[5] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -184,7 +184,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[6],
                         title=carNameList[6],
-                        text='NO.7 銷量:' + soldNumList[6] + '台',
+                        text='NO.7 銷量:' + soldNumList[6] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -204,7 +204,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[7],
                         title=carNameList[7],
-                        text='NO.8 銷量:' + soldNumList[7] + '台',
+                        text='NO.8 銷量:' + soldNumList[7] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -224,7 +224,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[8],
                         title=carNameList[8],
-                        text='NO.9 銷量:' + soldNumList[8] + '台',
+                        text='NO.9 銷量:' + soldNumList[8] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -244,7 +244,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[9],
                         title=carNameList[9],
-                        text='NO.10 銷量:' + soldNumList[9] + '台',
+                        text='NO.10 銷量:' + soldNumList[9] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -278,7 +278,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[0],
                         title=carNameList[0],
-                        text='NO.1 銷量:' + soldNumList[0] + '台',
+                        text='NO.1 銷量:' + soldNumList[0] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback1',
@@ -298,7 +298,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[1],
                         title=carNameList[1],
-                        text='NO.2 銷量:' + soldNumList[1] + '台',
+                        text='NO.2 銷量:' + soldNumList[1] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -318,7 +318,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[2],
                         title=carNameList[2],
-                        text='NO.3 銷量:' + soldNumList[2] + '台',
+                        text='NO.3 銷量:' + soldNumList[2] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -338,7 +338,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[3],
                         title=carNameList[3],
-                        text='NO.4 銷量:' + soldNumList[3] + '台',
+                        text='NO.4 銷量:' + soldNumList[3] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -358,7 +358,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[4],
                         title=carNameList[4],
-                        text='NO.5 銷量:' + soldNumList[4] + '台',
+                        text='NO.5 銷量:' + soldNumList[4] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -378,7 +378,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[5],
                         title=carNameList[5],
-                        text='NO.6 銷量:' + soldNumList[5] + '台',
+                        text='NO.6 銷量:' + soldNumList[5] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -398,7 +398,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[6],
                         title=carNameList[6],
-                        text='NO.7 銷量:' + soldNumList[6] + '台',
+                        text='NO.7 銷量:' + soldNumList[6] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -418,7 +418,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[7],
                         title=carNameList[7],
-                        text='NO.8 銷量:' + soldNumList[7] + '台',
+                        text='NO.8 銷量:' + soldNumList[7] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -438,7 +438,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[8],
                         title=carNameList[8],
-                        text='NO.9 銷量:' + soldNumList[8] + '台',
+                        text='NO.9 銷量:' + soldNumList[8] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -458,7 +458,7 @@ def handle_message(event):
                     CarouselColumn(
                         thumbnail_image_url=RankImageList[9],
                         title=carNameList[9],
-                        text='NO.10 銷量:' + soldNumList[9] + '台',
+                        text='NO.10 銷量:' + soldNumList[9] ,
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
