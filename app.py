@@ -63,8 +63,8 @@ def handle_message(event):
                 columns=[
                     CarouselColumn(
                         thumbnail_image_url=localRankImageList[0],
-                        title='this is menu1',
-                        text='description1',
+                        title=carNameList[0],
+                        text='NO.1',
                         actions=[
                             PostbackTemplateAction(
                                 label='postback1',
@@ -83,8 +83,8 @@ def handle_message(event):
                     ),
                     CarouselColumn(
                         thumbnail_image_url=localRankImageList[1],
-                        title='this is menu2',
-                        text='description2',
+                        title=carNameList[1],
+                        text='NO.2',
                         actions=[
                             PostbackTemplateAction(
                                 label='postback2',
@@ -100,7 +100,167 @@ def handle_message(event):
                                 uri='http://example.com/2'
                             )
                         ]
-                    )
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=localRankImageList[1],
+                        title=carNameList[2],
+                        text='NO.3',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=localRankImageList[1],
+                        title=carNameList[3],
+                        text='NO.4',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=localRankImageList[1],
+                        title=carNameList[4],
+                        text='NO.5',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=localRankImageList[1],
+                        title=carNameList[5],
+                        text='NO.6',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=localRankImageList[1],
+                        title=carNameList[6],
+                        text='NO.7',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=localRankImageList[1],
+                        title=carNameList[7],
+                        text='NO.8',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=localRankImageList[1],
+                        title=carNameList[8],
+                        text='NO.9',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=localRankImageList[1],
+                        title=carNameList[9],
+                        text='NO.10',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
                 ]
             )
         )
