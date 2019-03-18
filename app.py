@@ -82,7 +82,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='顯示在開頭的大圖片網址',
+                        thumbnail_image_url=localRankImageList[1],
                         title='this is menu2',
                         text='description2',
                         actions=[
