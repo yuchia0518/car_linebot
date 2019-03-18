@@ -53,15 +53,33 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     if event.message.text == '國產車銷售排行':
         month,domesticRank = getLocalCarRanking()
-
         message = TextSendMessage(text=month+"/n"+domesticRank)
+        localRankImageList = getLocalCarRankingImage()
+
+        Image_Carousel = TemplateSendMessage(
+            alt_text='目錄 template',
+            template=ImageCarouselTemplate(
+                columns=[
+                    ImageCarouselColumn(
+                        image_url=localRankImageList[0],
+                        action=PostbackTemplateAction(
+                            label='postback1',
+                            text='postback text1',
+                            data='action=buy&itemid=1'
+                        )
+                    ),
+
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, Image_Carousel)
     elif event.message.text == '進口車銷售排行':
         month, importedRank = getLocalCarRanking()
 
         message = TextSendMessage(text=month + "/n" + importedRank)
     else:
         message = TextSendMessage(text='B嘴')
-    line_bot_api.reply_message(event.reply_token, message)
+
 
 
 def getLocalCarRanking():
@@ -73,6 +91,7 @@ def getLocalCarRanking():
     namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
     numdivs = soup.find('div', id='domestic').find_all('span', 'carNum')
     monthText = selector.xpath('/html/body/div[2]/div[2]/div/div[4]/div[3]/div[5]/ul/li[1]/a/text()')
+    imgurls = soup.find('div', id='domestic').find_all('img')
     i = 1
     for namediv, numdiv in zip(namedivs, numdivs):
         formatstr = '%d %s %s' % (i, namediv.text, numdiv.text)
@@ -80,7 +99,24 @@ def getLocalCarRanking():
         localCarString = localCarString + formatstr + '\n'
     print(monthText[0])
     print(localCarString)
-    return monthText, localCarString
+    return monthText[0], localCarString
+
+def getLocalCarRankingImage(): #得到國產車排名的照片
+    url = 'https://www.kingautos.net/'
+    resp = requests.get(url, headers=headers).content
+    soup = BeautifulSoup(resp, 'html.parser')
+    imgurls = soup.find('div', id='domestic').find_all('img')
+    i = 1
+    imglist = []
+    for url in imgurls:
+        if str(url).find('http') == -1:
+            imgurl = url['src'].split('-')[0]
+            imglist.append('https:' + imgurl + '.jpg')
+        else:
+            imgurl = url['src'].split('-')[0]
+            imglist.append(imgurl + '.jpg')
+
+    return imglist
 
 
 def getImportedCarRanking():
@@ -99,7 +135,24 @@ def getImportedCarRanking():
         importedCarString = importedCarString + formatstr + '\n'
     print(monthText[0])
     print(importedCarString)
-    return monthText, importedCarString
+    return monthText[0], importedCarString
+
+def getImportedCarRankingImage(): #得到進口車排名的照片
+    url = 'https://www.kingautos.net/'
+    resp = requests.get(url, headers=headers).content
+    soup = BeautifulSoup(resp, 'html.parser')
+    imgurls = soup.find('div', id='imported').find_all('img')
+    i = 1
+    imglist = []
+    for url in imgurls:
+        if str(url).find('http') == -1:
+            imgurl = url['src'].split('-')[0]
+            imglist.append('https:' + imgurl + '.jpg')
+        else:
+            imgurl = url['src'].split('-')[0]
+            imglist.append(imgurl + '.jpg')
+
+    return imglist
 
 
 import os
