@@ -52,7 +52,7 @@ headers = {"User-Agent": user_agent}
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     if event.message.text == '國產車銷售排行':
-        month,carNameList,soldNumList = getLocalCarRanking()
+        month, carNameList, soldNumList = getLocalCarRanking()
         monthMessage = TextSendMessage(text=month)
         # line_bot_api.reply_message(event.reply_token, monthMessage)
         localRankImageList = getLocalCarRankingImage()
@@ -61,14 +61,14 @@ def handle_message(event):
             alt_text='當月國產車銷量排名',
             template=ImageCarouselTemplate(
                 columns=[
-                        ImageCarouselColumn(
-                            image_url=localRankImageList[0],
-                            action=PostbackTemplateAction(
-                                label=carNameList[0] + '\n' + soldNumList[0],
-                                text='postback text1',
-                                data='action=buy&itemid=1'
-                            )
-                        ),
+                    ImageCarouselColumn(
+                        image_url=localRankImageList[0],
+                        action=PostbackTemplateAction(
+                            label=carNameList[0] + '\n' + soldNumList[0],
+                            text='postback text1',
+                            data='action=buy&itemid=1'
+                        )
+                    ),
                     ImageCarouselColumn(
                         image_url=localRankImageList[1],
                         action=PostbackTemplateAction(
@@ -96,7 +96,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[4],
                         action=PostbackTemplateAction(
-                            label=carNameList[4]+ '\n' + soldNumList[4],
+                            label=carNameList[4] + '\n' + soldNumList[4],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -104,7 +104,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[5],
                         action=PostbackTemplateAction(
-                            label=carNameList[5]+ '\n' + soldNumList[5],
+                            label=carNameList[5] + '\n' + soldNumList[5],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -112,7 +112,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[6],
                         action=PostbackTemplateAction(
-                            label=carNameList[6]+ '\n' + soldNumList[6],
+                            label=carNameList[6] + '\n' + soldNumList[6],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -120,7 +120,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[7],
                         action=PostbackTemplateAction(
-                            label=carNameList[7]+ '\n' + soldNumList[7],
+                            label=carNameList[7] + '\n' + soldNumList[7],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -128,7 +128,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[8],
                         action=PostbackTemplateAction(
-                            label=carNameList[8]+ '\n' + soldNumList[8],
+                            label=carNameList[8] + '\n' + soldNumList[8],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -136,11 +136,11 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[9],
                         action=PostbackTemplateAction(
-                            label=carNameList[9]+ '\n' + soldNumList[9],
+                            label=carNameList[9] + '\n' + soldNumList[9],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
-                    ),
+                    )
 
                 ]
             )
@@ -152,7 +152,6 @@ def handle_message(event):
         message = TextSendMessage(text=month + "/n" + importedRank)
     else:
         message = TextSendMessage(text='B嘴')
-
 
 
 def getLocalCarRanking():
@@ -174,7 +173,8 @@ def getLocalCarRanking():
         soldList.append(solddiv.text)
     return monthText[0], carList, soldList
 
-def getLocalCarRankingImage(): #得到國產車排名的照片
+
+def getLocalCarRankingImage():  # 得到國產車排名的照片
     url = 'https://www.kingautos.net/'
     resp = requests.get(url, headers=headers).content
     soup = BeautifulSoup(resp, 'html.parser')
@@ -210,7 +210,8 @@ def getImportedCarRanking():
     print(importedCarString)
     return monthText[0], importedCarString
 
-def getImportedCarRankingImage(): #得到進口車排名的照片
+
+def getImportedCarRankingImage():  # 得到進口車排名的照片
     url = 'https://www.kingautos.net/'
     resp = requests.get(url, headers=headers).content
     soup = BeautifulSoup(resp, 'html.parser')
