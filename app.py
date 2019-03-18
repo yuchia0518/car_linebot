@@ -54,15 +54,15 @@ def handle_message(event):
     if event.message.text == '國產車銷售排行':
         month, carNameList, soldNumList = getLocalCarRanking()
         monthMessage = TextSendMessage(text=month)
-        # line_bot_api.reply_message(event.reply_token, monthMessage)
-        localRankImageList = getLocalCarRankingImage()
+        line_bot_api.reply_message(event.reply_token, monthMessage)
+        RankImageList = getLocalCarRankingImage()
 
         Carousel = TemplateSendMessage(
             alt_text='當月國產車銷量排名',
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[0],
+                        thumbnail_image_url=RankImageList[0],
                         title=carNameList[0],
                         text='NO.1',
                         actions=[
@@ -82,7 +82,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[1],
+                        thumbnail_image_url=RankImageList[1],
                         title=carNameList[1],
                         text='NO.2',
                         actions=[
@@ -102,7 +102,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[1],
+                        thumbnail_image_url=RankImageList[2],
                         title=carNameList[2],
                         text='NO.3',
                         actions=[
@@ -122,7 +122,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[1],
+                        thumbnail_image_url=RankImageList[3],
                         title=carNameList[3],
                         text='NO.4',
                         actions=[
@@ -142,7 +142,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[1],
+                        thumbnail_image_url=RankImageList[4],
                         title=carNameList[4],
                         text='NO.5',
                         actions=[
@@ -162,7 +162,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[1],
+                        thumbnail_image_url=RankImageList[5],
                         title=carNameList[5],
                         text='NO.6',
                         actions=[
@@ -182,7 +182,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[1],
+                        thumbnail_image_url=RankImageList[6],
                         title=carNameList[6],
                         text='NO.7',
                         actions=[
@@ -202,7 +202,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[1],
+                        thumbnail_image_url=RankImageList[7],
                         title=carNameList[7],
                         text='NO.8',
                         actions=[
@@ -222,7 +222,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[1],
+                        thumbnail_image_url=RankImageList[8],
                         title=carNameList[8],
                         text='NO.9',
                         actions=[
@@ -242,7 +242,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url=localRankImageList[1],
+                        thumbnail_image_url=RankImageList[9],
                         title=carNameList[9],
                         text='NO.10',
                         actions=[
@@ -266,9 +266,219 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, Carousel)
     elif event.message.text == '進口車銷售排行':
-        month, importedRank = getLocalCarRanking()
+        month, carNameList, soldNumList = getImportedCarRanking()
+        monthMessage = TextSendMessage(text=month)
+        line_bot_api.reply_message(event.reply_token, monthMessage)
+        RankImageList = getImportedCarRankingImage()
 
-        message = TextSendMessage(text=month + "/n" + importedRank)
+        Carousel = TemplateSendMessage(
+            alt_text='當月國產車銷量排名',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[0],
+                        title=carNameList[0],
+                        text='NO.1',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback1',
+                                text='postback text1',
+                                data='action=buy&itemid=1'
+                            ),
+                            MessageTemplateAction(
+                                label='message1',
+                                text='message text1'
+                            ),
+                            URITemplateAction(
+                                label='uri1',
+                                uri='http://example.com/1'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[1],
+                        title=carNameList[1],
+                        text='NO.2',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[2],
+                        title=carNameList[2],
+                        text='NO.3',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[3],
+                        title=carNameList[3],
+                        text='NO.4',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[4],
+                        title=carNameList[4],
+                        text='NO.5',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[5],
+                        title=carNameList[5],
+                        text='NO.6',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[6],
+                        title=carNameList[6],
+                        text='NO.7',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[7],
+                        title=carNameList[7],
+                        text='NO.8',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[8],
+                        title=carNameList[8],
+                        text='NO.9',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url=RankImageList[9],
+                        title=carNameList[9],
+                        text='NO.10',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    ),
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, Carousel)
     else:
         message = TextSendMessage(text='B嘴')
 
@@ -277,7 +487,6 @@ def getLocalCarRanking():
     url = 'https://www.kingautos.net/'
     resp = requests.get(url, headers=headers).content
     selector = etree.HTML(resp)
-    localCarString = ''
     soup = BeautifulSoup(resp, 'html.parser')
     namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
 
@@ -315,19 +524,19 @@ def getImportedCarRanking():
     url = 'https://www.kingautos.net/'
     resp = requests.get(url, headers=headers).content
     selector = etree.HTML(resp)
-    importedCarString = ''
     soup = BeautifulSoup(resp, 'html.parser')
-    namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
-    numdivs = soup.find('div', id='domestic').find_all('span', 'carNum')
+    namedivs = soup.find('div', id='imported').find_all('span', 'carName')
+
+    solddivs = soup.find('div', id='imported').find_all('span', 'carNum')
+
+    carList = []
+    soldList = []
     monthText = selector.xpath('/html/body/div[2]/div[2]/div/div[4]/div[3]/div[5]/ul/li[1]/a/text()')
-    i = 1
-    for namediv, numdiv in zip(namedivs, numdivs):
-        formatstr = '%d %s %s' % (i, namediv.text, numdiv.text)
-        i += 1
-        importedCarString = importedCarString + formatstr + '\n'
-    print(monthText[0])
-    print(importedCarString)
-    return monthText[0], importedCarString
+
+    for namediv, solddiv in zip(namedivs, solddivs):
+        carList.append(namediv.text)
+        soldList.append(solddiv.text)
+    return monthText[0], carList, soldList
 
 
 def getImportedCarRankingImage():  # 得到進口車排名的照片
