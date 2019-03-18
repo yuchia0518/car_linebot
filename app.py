@@ -54,7 +54,7 @@ def handle_message(event):
     if event.message.text == '國產車銷售排行':
         month, carNameList, soldNumList = getLocalCarRanking()
         monthMessage = TextSendMessage(text=month)
-        line_bot_api.reply_message(event.reply_token, monthMessage)
+        # line_bot_api.reply_message(event.reply_token, monthMessage)
         RankImageList = getLocalCarRankingImage()
 
         Carousel = TemplateSendMessage(
@@ -268,7 +268,7 @@ def handle_message(event):
     elif event.message.text == '進口車銷售排行':
         month, carNameList, soldNumList = getImportedCarRanking()
         monthMessage = TextSendMessage(text=month)
-        line_bot_api.reply_message(event.reply_token, monthMessage)
+        # line_bot_api.reply_message(event.reply_token, monthMessage)
         RankImageList = getImportedCarRankingImage()
 
         Carousel = TemplateSendMessage(
