@@ -43,11 +43,11 @@ browser = webdriver.Chrome(chrome_options=options,
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
-    if event.message.text == '國產車銷售排行':
-        domesticRank = getLocalCarRanking()
-        message = TextSendMessage(text=domesticRank)
-    elif event.message.text == '進口車銷售排行':
-        message = TextSendMessage(text=event.message.text)
+    # if event.message.text == '國產車銷售排行':
+    #     domesticRank = getLocalCarRanking()
+    #     message = TextSendMessage(text=domesticRank)
+    # elif event.message.text == '進口車銷售排行':
+    message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
 
 
