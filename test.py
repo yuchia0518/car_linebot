@@ -9,9 +9,9 @@ browser = webdriver.Chrome(chrome_options=options,
 
 if __name__ == '__main__':
     url = 'https://www.kingautos.net/'
-    browser.get(url)
+    resp = requests.get(url)
     localCarString = ''
-    soup = BeautifulSoup(browser.page_source, 'html.parser')
+    soup = BeautifulSoup(resp.text, 'html.parser')
     namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
     numdivs = soup.find('div', id='domestic').find_all('span', 'carNum')
     i = 1

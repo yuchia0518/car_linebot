@@ -35,27 +35,27 @@ def callback():
     return 'OK'
 
 
-options = webdriver.ChromeOptions()
-options.add_argument('--headless')
-browser = webdriver.Chrome(chrome_options=options,
-                           executable_path='C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe')
+# options = webdriver.ChromeOptions()
+# options.add_argument('--headless')
+# browser = webdriver.Chrome(chrome_options=options,
+#                            executable_path='C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe')
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    # message = TextSendMessage(text=event.message.text)
-    # if event.message.text == '國產車銷售排行':
-    #     domesticRank = getLocalCarRanking()
-    #     message = TextSendMessage(text=domesticRank)
-    # elif event.message.text == '進口車銷售排行':
     message = TextSendMessage(text=event.message.text)
+    if event.message.text == '國產車銷售排行':
+        domesticRank = getLocalCarRanking()
+        message = TextSendMessage(text=domesticRank)
+    elif event.message.text == '進口車銷售排行':
+        message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
 
 
 def getLocalCarRanking():
     url = 'https://www.kingautos.net/'
-    browser.get(url)
+    resp = requests.get(url)
     localCarString = ''
-    soup = BeautifulSoup(browser.page_source, 'html.parser')
+    soup = BeautifulSoup(resp.text, 'html.parser')
     namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
     numdivs = soup.find('div', id='domestic').find_all('span', 'carNum')
     i = 1
