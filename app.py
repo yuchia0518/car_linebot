@@ -57,95 +57,54 @@ def handle_message(event):
         # line_bot_api.reply_message(event.reply_token, monthMessage)
         localRankImageList = getLocalCarRankingImage()
 
-        Image_Carousel = TemplateSendMessage(
+        Carousel = TemplateSendMessage(
             alt_text='當月國產車銷量排名',
-            template=ImageCarouselTemplate(
+            template=CarouselTemplate(
                 columns=[
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[0],
-                        action=PostbackTemplateAction(
-                            label=carNameList[0],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
+                    CarouselColumn(
+                        thumbnail_image_url=localRankImageList[0],
+                        title='this is menu1',
+                        text='description1',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback1',
+                                text='postback text1',
+                                data='action=buy&itemid=1'
+                            ),
+                            MessageTemplateAction(
+                                label='message1',
+                                text='message text1'
+                            ),
+                            URITemplateAction(
+                                label='uri1',
+                                uri='http://example.com/1'
+                            )
+                        ]
                     ),
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[1],
-                        action=PostbackTemplateAction(
-                            label=carNameList[1],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[2],
-                        action=PostbackTemplateAction(
-                            label=carNameList[2],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[3],
-                        action=PostbackTemplateAction(
-                            label=carNameList[3],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[4],
-                        action=PostbackTemplateAction(
-                            label=carNameList[4],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[5],
-                        action=PostbackTemplateAction(
-                            label=carNameList[5],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[6],
-                        action=PostbackTemplateAction(
-                            label=carNameList[6],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[7],
-                        action=PostbackTemplateAction(
-                            label=carNameList[7],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[8],
-                        action=PostbackTemplateAction(
-                            label=carNameList[8],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
-                    ),
-                    ImageCarouselColumn(
-                        image_url=localRankImageList[9],
-                        action=PostbackTemplateAction(
-                            label=carNameList[9],
-                            text='postback text1',
-                            data='action=buy&itemid=1'
-                        )
+                    CarouselColumn(
+                        thumbnail_image_url='顯示在開頭的大圖片網址',
+                        title='this is menu2',
+                        text='description2',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='連結2',
+                                uri='http://example.com/2'
+                            )
+                        ]
                     )
-
                 ]
             )
         )
-        line_bot_api.reply_message(event.reply_token, Image_Carousel)
+        line_bot_api.reply_message(event.reply_token, Carousel)
     elif event.message.text == '進口車銷售排行':
         month, importedRank = getLocalCarRanking()
 
