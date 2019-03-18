@@ -64,7 +64,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[0],
                         action=PostbackTemplateAction(
-                            label=carNameList[0] + '\n' + soldNumList[0],
+                            label=carNameList[0],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -72,7 +72,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[1],
                         action=PostbackTemplateAction(
-                            label=carNameList[1] + '\n' + soldNumList[1],
+                            label=carNameList[1],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -80,7 +80,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[2],
                         action=PostbackTemplateAction(
-                            label=carNameList[2] + '\n' + soldNumList[2],
+                            label=carNameList[2],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -88,7 +88,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[3],
                         action=PostbackTemplateAction(
-                            label=carNameList[3] + '\n' + soldNumList[3],
+                            label=carNameList[3],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -96,7 +96,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[4],
                         action=PostbackTemplateAction(
-                            label=carNameList[4] + '\n' + soldNumList[4],
+                            label=carNameList[4],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -104,7 +104,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[5],
                         action=PostbackTemplateAction(
-                            label=carNameList[5] + '\n' + soldNumList[5],
+                            label=carNameList[5],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -112,7 +112,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[6],
                         action=PostbackTemplateAction(
-                            label=carNameList[6] + '\n' + soldNumList[6],
+                            label=carNameList[6],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -120,7 +120,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[7],
                         action=PostbackTemplateAction(
-                            label=carNameList[7] + '\n' + soldNumList[7],
+                            label=carNameList[7],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -128,7 +128,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[8],
                         action=PostbackTemplateAction(
-                            label=carNameList[8] + '\n' + soldNumList[8],
+                            label=carNameList[8],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
@@ -136,7 +136,7 @@ def handle_message(event):
                     ImageCarouselColumn(
                         image_url=localRankImageList[9],
                         action=PostbackTemplateAction(
-                            label=carNameList[9] + '\n' + soldNumList[9],
+                            label=carNameList[9],
                             text='postback text1',
                             data='action=buy&itemid=1'
                         )
