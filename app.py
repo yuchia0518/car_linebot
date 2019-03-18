@@ -11,13 +11,16 @@ from linebot.models import *
 from bs4 import BeautifulSoup
 import requests
 from selenium import webdriver
+from lxml import etree
 
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('PpsikGBkL6NldjaoIr6ZeFkJvQrcce8zbpFrDUpqOIl7NuX7RIVRob9DeVxZV+1TsUQvlqJ6mUG1nv2njG2O4Yxn9+mSYPofmV3X1ywk8WubSOQQil/A99S77ZxCWV97eExQtYq0wliPyGGD7ndweAdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi(
+    'PpsikGBkL6NldjaoIr6ZeFkJvQrcce8zbpFrDUpqOIl7NuX7RIVRob9DeVxZV+1TsUQvlqJ6mUG1nv2njG2O4Yxn9+mSYPofmV3X1ywk8WubSOQQil/A99S77ZxCWV97eExQtYq0wliPyGGD7ndweAdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
 handler = WebhookHandler('f88ac77ef47c8bd99c2607f38c13bebe')
+
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -35,6 +38,11 @@ def callback():
     return 'OK'
 
 
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
+
+headers = {"User-Agent": user_agent}
+
+
 # options = webdriver.ChromeOptions()
 # options.add_argument('--headless')
 # browser = webdriver.Chrome(chrome_options=options,
@@ -44,50 +52,59 @@ def callback():
 def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     if event.message.text == '國產車銷售排行':
-        domesticRank = getLocalCarRanking()
-        message = TextSendMessage(text=domesticRank)
+        month,domesticRank = getLocalCarRanking()
+
+        message = TextSendMessage(text=month+"/n"+domesticRank)
     elif event.message.text == '進口車銷售排行':
-        importedRank = getImportedCarRanking()
-        message = TextSendMessage(text=importedRank)
+        month, importedRank = getLocalCarRanking()
+
+        message = TextSendMessage(text=month + "/n" + importedRank)
+    else:
+        message = TextSendMessage(text='B嘴')
     line_bot_api.reply_message(event.reply_token, message)
 
 
 def getLocalCarRanking():
     url = 'https://www.kingautos.net/'
-    resp = requests.get(url)
+    resp = requests.get(url, headers=headers).content
+    selector = etree.HTML(resp)
     localCarString = ''
-    soup = BeautifulSoup(resp.text, 'html.parser')
+    soup = BeautifulSoup(resp, 'html.parser')
     namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
     numdivs = soup.find('div', id='domestic').find_all('span', 'carNum')
+    monthText = selector.xpath('/html/body/div[2]/div[2]/div/div[4]/div[3]/div[5]/ul/li[1]/a/text()')
     i = 1
     for namediv, numdiv in zip(namedivs, numdivs):
         formatstr = '%d %s %s' % (i, namediv.text, numdiv.text)
         i += 1
         localCarString = localCarString + formatstr + '\n'
+    print(monthText[0])
     print(localCarString)
-    return localCarString
+    return monthText, localCarString
+
 
 def getImportedCarRanking():
     url = 'https://www.kingautos.net/'
-    resp = requests.get(url)
+    resp = requests.get(url, headers=headers).content
+    selector = etree.HTML(resp)
     importedCarString = ''
-    soup = BeautifulSoup(resp.text, 'html.parser')
-    namedivs = soup.find('div', id='imported').find_all('span', 'carName')
-    numdivs = soup.find('div', id='imported').find_all('span', 'carNum')
+    soup = BeautifulSoup(resp, 'html.parser')
+    namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
+    numdivs = soup.find('div', id='domestic').find_all('span', 'carNum')
+    monthText = selector.xpath('/html/body/div[2]/div[2]/div/div[4]/div[3]/div[5]/ul/li[1]/a/text()')
     i = 1
     for namediv, numdiv in zip(namedivs, numdivs):
         formatstr = '%d %s %s' % (i, namediv.text, numdiv.text)
         i += 1
         importedCarString = importedCarString + formatstr + '\n'
+    print(monthText[0])
     print(importedCarString)
-    return importedCarString
-
-
-
+    return monthText, importedCarString
 
 
 import os
+
 if __name__ == "__main__":
     # port = int(os.environ.get('PORT', 5000))
-    port=os.environ['PORT']
+    port = os.environ['PORT']
     app.run(host='0.0.0.0', port=port)
