@@ -63,6 +63,7 @@ def getLocalCarRanking():
         formatstr = '%d %s %s' % (i, namediv.text, numdiv.text)
         i += 1
         localCarString = localCarString + formatstr + '\n'
+    print(localCarString)
     return localCarString
 
 
