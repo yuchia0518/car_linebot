@@ -54,11 +54,11 @@ def handle_message(event):
     if event.message.text == '國產車銷售排行':
         month,carNameList,soldNumList = getLocalCarRanking()
         monthMessage = TextSendMessage(text=month)
-        line_bot_api.reply_message(event.reply_token, monthMessage)
+        # line_bot_api.reply_message(event.reply_token, monthMessage)
         localRankImageList = getLocalCarRankingImage()
 
         Image_Carousel = TemplateSendMessage(
-            alt_text='目錄 template',
+            alt_text='當月國產車銷量排名',
             template=ImageCarouselTemplate(
                 columns=[
                         ImageCarouselColumn(
