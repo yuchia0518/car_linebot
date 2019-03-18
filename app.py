@@ -44,8 +44,8 @@ browser = webdriver.Chrome(chrome_options=options,
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     if event.message.text == '國產車銷售排行':
-        text = getLocalCarRanking()
-        message = TextSendMessage(text=text)
+        domesticRank = getLocalCarRanking()
+        message = TextSendMessage(text=domesticRank)
     elif event.message.text == '進口車銷售排行':
         message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
@@ -54,9 +54,18 @@ def handle_message(event):
 def getLocalCarRanking():
     url = 'https://www.kingautos.net/'
     browser.get(url)
-    soup = BeautifulSoup(browser.page_source, 'html5lib')
-    str = soup.find('div','domestic')
-    return str
+    localCarString = ''
+    soup = BeautifulSoup(browser.page_source, 'html.parser')
+    namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
+    numdivs = soup.find('div', id='domestic').find_all('span', 'carNum')
+    i = 1
+    for namediv, numdiv in zip(namedivs, numdivs):
+        formatstr = '%d %s %s' % (i, namediv.text, numdiv.text)
+        i += 1
+        localCarString = localCarString + formatstr + '\n'
+    return localCarString
+
+
 
 
 
