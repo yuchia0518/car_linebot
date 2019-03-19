@@ -14,6 +14,10 @@ user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 headers = {"User-Agent": user_agent}
 
 if __name__ == '__main__':
+    f = open('C://Users//Willy//Desktop//汽車LineBot//lineapi.txt', 'r')
+
+    print(f.readline())
+    print(f.readline())
     # url = 'https://www.kingautos.net/'
     # resp = requests.get(url, headers=headers).content
     # selector = etree.HTML(resp)
@@ -31,21 +35,21 @@ if __name__ == '__main__':
     # print(monthText[0])
     # print(localCarString)
 
-    url = 'https://www.kingautos.net/'
-    resp = requests.get(url, headers=headers).content
-    selector = etree.HTML(resp)
-    localCarString = ''
-    soup = BeautifulSoup(resp, 'html.parser')
-    namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
-
-    solddivs = soup.find('div', id='domestic').find_all('span', 'carNum')
-
-    carList = []
-    soldList = []
-    monthText = selector.xpath('/html/body/div[2]/div[2]/div/div[4]/div[3]/div[5]/ul/li[1]/a/text()')
-
-    for namediv, solddiv in zip(namedivs, solddivs):
-        carList.append(namediv.text)
-        soldList.append(solddiv.text)
-    print(monthText[0])
-    print(carList[5])
+    # url = 'https://www.kingautos.net/'
+    # resp = requests.get(url, headers=headers).content
+    # selector = etree.HTML(resp)
+    # localCarString = ''
+    # soup = BeautifulSoup(resp, 'html.parser')
+    # namedivs = soup.find('div', id='domestic').find_all('span', 'carName')
+    #
+    # solddivs = soup.find('div', id='domestic').find_all('span', 'carNum')
+    #
+    # carList = []
+    # soldList = []
+    # monthText = selector.xpath('/html/body/div[2]/div[2]/div/div[4]/div[3]/div[5]/ul/li[1]/a/text()')
+    #
+    # for namediv, solddiv in zip(namedivs, solddivs):
+    #     carList.append(namediv.text)
+    #     soldList.append(solddiv.text)
+    # print(monthText[0])
+    # print(carList[5])
