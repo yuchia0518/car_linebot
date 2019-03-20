@@ -1,3 +1,5 @@
+import urllib
+
 from bs4 import BeautifulSoup
 import requests
 from selenium import webdriver
@@ -14,10 +16,21 @@ user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 headers = {"User-Agent": user_agent}
 
 if __name__ == '__main__':
-    f = open('C://Users//Willy//Desktop//汽車LineBot//lineapi.txt', 'r')
+    resp = requests.get('https://www.youtube.com/user/tw8891/search?query=rav4')
+    soup = BeautifulSoup(resp.text,'html5lib')
+    divs = soup.find_all('a')
+    for div in divs:
+        if(div['title']):
+            print('')
+        else:
+            print(div['title'])
 
-    print(f.readline())
-    print(f.readline())
+
+
+    # f = open('C://Users//Willy//Desktop//汽車LineBot//lineapi.txt', 'r')
+    #
+    # print(f.readline())
+    # print(f.readline())
     # url = 'https://www.kingautos.net/'
     # resp = requests.get(url, headers=headers).content
     # selector = etree.HTML(resp)

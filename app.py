@@ -18,7 +18,8 @@ app = Flask(__name__)
 
 # f = open('C://Users//Willy//Desktop//汽車LineBot//lineapi.txt', 'r')
 
-line_bot_api = LineBotApi('PpsikGBkL6NldjaoIr6ZeFkJvQrcce8zbpFrDUpqOIl7NuX7RIVRob9DeVxZV+1TsUQvlqJ6mUG1nv2njG2O4Yxn9+mSYPofmV3X1ywk8WubSOQQil/A99S77ZxCWV97eExQtYq0wliPyGGD7ndweAdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi(
+    'PpsikGBkL6NldjaoIr6ZeFkJvQrcce8zbpFrDUpqOIl7NuX7RIVRob9DeVxZV+1TsUQvlqJ6mUG1nv2njG2O4Yxn9+mSYPofmV3X1ywk8WubSOQQil/A99S77ZxCWV97eExQtYq0wliPyGGD7ndweAdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('f88ac77ef47c8bd99c2607f38c13bebe')
 
 
@@ -67,17 +68,9 @@ def handle_message(event):
                         text='NO.1 銷量:' + soldNumList[0],
                         actions=[
                             PostbackTemplateAction(
-                                label='postback1',
-                                text='postback text1',
+                                label=carNameList[0],
+                                text=carNameList[0],
                                 data='action=buy&itemid=1'
-                            ),
-                            MessageTemplateAction(
-                                label='message1',
-                                text='message text1'
-                            ),
-                            URITemplateAction(
-                                label='uri1',
-                                uri='http://example.com/1'
                             )
                         ]
                     ),
