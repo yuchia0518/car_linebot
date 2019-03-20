@@ -73,12 +73,12 @@ def handle_message(event):
                                 data='action=buy&itemid=1'
                             ),
                             MessageTemplateAction(
-                                # label='message2',
-                                # text='message text2'
+                                label='連結2',
+                                text='message text2'
                             ),
                             URITemplateAction(
-                                # label='連結2',
-                                # uri='http://example.com/2'
+                                label='連結2',
+                                uri='http://example.com/2'
                             )
                         ]
                     ),
