@@ -71,6 +71,14 @@ def handle_message(event):
                                 label='搜尋Youtube',
                                 text=carNameList[0],
                                 data='action=buy&itemid=1'
+                            ),
+                            MessageTemplateAction(
+                                # label='message2',
+                                # text='message text2'
+                            ),
+                            URITemplateAction(
+                                # label='連結2',
+                                # uri='http://example.com/2'
                             )
                         ]
                     ),
