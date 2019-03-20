@@ -68,7 +68,7 @@ def handle_message(event):
                         text='NO.1 銷量:' + soldNumList[0],
                         actions=[
                             PostbackTemplateAction(
-                                label=carNameList[0],
+                                label='搜尋Youtube',
                                 text=carNameList[0],
                                 data='action=buy&itemid=1'
                             )
