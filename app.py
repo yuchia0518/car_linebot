@@ -481,7 +481,7 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, Carousel)
     else:
-        message = TextSendMessage(text='B嘴')
+        message = TextSendMessage(text='')
 
 
 def getLocalCarRanking():
